@@ -26,7 +26,7 @@ class GreetingHeaderWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // Texto de saludo
+            
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -46,7 +46,7 @@ class GreetingHeaderWidget extends StatelessWidget {
                 ),
               ],
             ),
-            // Avatar
+            
             CircleAvatar(
               radius: 22,
               backgroundColor: Colors.white12,

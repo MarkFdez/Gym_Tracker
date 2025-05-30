@@ -2,8 +2,8 @@ class UserProfile {
   final String uid;
   final String nombre;
   final int edad;
-  final double estatura; // en cm
-  final double peso; // en kg
+  final double estatura; 
+  final double peso;
 
   UserProfile({
     required this.uid,

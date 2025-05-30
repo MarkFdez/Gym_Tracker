@@ -5,7 +5,7 @@ import 'package:gym_tracker/screens/auth/login_screen.dart';
 import 'package:gym_tracker/theme/app_theme.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
-import 'package:gym_tracker/providers/auth_provider.dart' as local; // ALIAS APLICADO
+import 'package:gym_tracker/providers/auth_provider.dart' as local;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +15,7 @@ void main() async {
     await Firebase.initializeApp();
     runApp(
       ChangeNotifierProvider(
-        create: (_) => local.AuthProvider(), // USO DE TU PROPIO PROVIDER
+        create: (_) => local.AuthProvider(), 
         child: const MyApp(),
       ),
     );

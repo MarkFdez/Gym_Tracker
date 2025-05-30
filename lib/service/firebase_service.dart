@@ -72,7 +72,7 @@ class FirebaseService {
         .where('diaSemana', isEqualTo: diaSemana)
         .get();
   } catch (e) {
-    rethrow; // O puedes manejarlo y retornar un snapshot vacío si prefieres
+    rethrow; 
   }
 }
  Future<UserProfile?> getUserProfileData(String uid) async {

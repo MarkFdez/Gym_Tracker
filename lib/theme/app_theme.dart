@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const background = Color(0xFF121212);
-  static const primary = Color(0xFF1976D2); // Azul brillante
-  static const secondary = Color(0xFF424242); // Gris oscuro
+  static const primary = Color(0xFF1976D2); 
+  static const secondary = Color(0xFF424242); 
   static const textPrimary = Colors.white;
-  static const textSecondary = Color(0xFFB0BEC5); // Azul-gris claro
+  static const textSecondary = Color(0xFFB0BEC5); 
   static const card = Color(0xFF1E1E1E);
 }
 

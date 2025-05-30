@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gym_tracker/screens/auth/login_screen.dart';
 import '../models/user_profile.dart';
 import '../service/firebase_service.dart';
-import '../utils/validators.dart'; // NUEVO
+import '../utils/validators.dart'; 
 
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({super.key});
@@ -13,7 +13,7 @@ class UserProfileScreen extends StatefulWidget {
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
-  final _formKey = GlobalKey<FormState>(); // NUEVO
+  final _formKey = GlobalKey<FormState>(); 
 
   final _nombreController = TextEditingController();
   final _edadController = TextEditingController();
@@ -43,7 +43,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   }
 
   Future<void> _guardarDatos() async {
-    if (!_formKey.currentState!.validate()) return; // NUEVO
+    if (!_formKey.currentState!.validate()) return; 
 
     setState(() => _cargando = true);
 
@@ -151,7 +151,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               const SizedBox(height: 30),
               Expanded(
                 child: Form(
-                  key: _formKey, // NUEVO
+                  key: _formKey, 
                   child: ListView(
                     children: [
                       _buildField("Nombre", _nombreController,

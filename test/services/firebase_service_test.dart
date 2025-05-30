@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gym_tracker/models/workout_session_model.dart';
 import 'package:gym_tracker/service/firebase_service.dart';
 import 'package:mockito/mockito.dart';
-import '../mocks/firebase_mocks.mocks.dart'; // Importa los mocks generados
+import '../mocks/firebase_mocks.mocks.dart'; 
 
 void main() {
   group('FirebaseService', () {

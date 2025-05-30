@@ -30,7 +30,7 @@ void main() {
   await tester.pumpWidget(
     MaterialApp(
       routes: {
-        '/auth': (context) => const Placeholder(), // o alguna pantalla falsa
+        '/auth': (context) => const Placeholder(), 
       },
       home: LoginScreen(auth: mockAuth),
     ),
@@ -72,7 +72,7 @@ void main() {
     });
 
   testWidgets('no muestra errores con datos válidos', (tester) async {
-  final mockUser = MockUser(); // mock de User
+  final mockUser = MockUser();
 
   when(mockCredential.user).thenReturn(mockUser);
   when(mockAuth.signInWithEmailAndPassword(

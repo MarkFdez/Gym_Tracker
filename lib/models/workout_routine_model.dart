@@ -46,7 +46,7 @@ class WorkoutRoutine {
   final DateTime fecha;
   final String nombre;
   final List<Exercise> ejercicios;
-  final int? diaSemana; // 0=Lunes … 6=Domingo
+  final int? diaSemana; 
 
   WorkoutRoutine({
     required this.id,

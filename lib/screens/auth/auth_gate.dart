@@ -37,10 +37,10 @@ class AuthGate extends StatelessWidget {
 
         final data = perfilSnapshot.data;
         if (data == null || !data.exists) {
-          return const ProfileScreen(); // formulario para nuevo usuario
+          return const ProfileScreen(); 
         }
 
-        return const HomeScreen(); // todo correcto → ir a home
+        return const HomeScreen(); 
       },
     );
   }

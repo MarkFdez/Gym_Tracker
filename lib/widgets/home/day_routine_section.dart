@@ -104,7 +104,7 @@ class _DayRoutineSectionState extends State<DayRoutineSection> {
       );
     }
 
-    // Si no hay rutina asignada
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
