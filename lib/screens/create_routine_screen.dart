@@ -25,19 +25,83 @@ class _CreateRoutineScreenState extends State<CreateRoutineScreen> {
 
   final gruposMusculares = [
     'Pecho', 'Espalda', 'Piernas', 'Hombros',
-    'Bíceps', 'Tríceps', 'Abdominales', 'Cardio',
+    'Bíceps', 'Tríceps', 'Abdominales', 
   ];
 
   final Map<String, List<String>> ejerciciosPorGrupo = {
-    'Pecho': ['Press banca', 'Aperturas', 'Press inclinado'],
-    'Espalda': ['Dominadas', 'Remo', 'Peso muerto'],
-    'Piernas': ['Sentadillas', 'Prensa', 'Zancadas'],
-    'Hombros': ['Press militar', 'Elevaciones laterales'],
-    'Bíceps': ['Curl con barra', 'Curl martillo'],
-    'Tríceps': ['Fondos', 'Press francés'],
-    'Abdominales': ['Crunch', 'Plancha'],
-    'Cardio': ['Cinta', 'Bicicleta', 'Remo'],
-  };
+  'Pecho': [
+    'Press banca',
+    'Press inclinado',
+    'Press declinado',
+    'Aperturas con mancuernas',
+    'Aperturas en máquina',
+    'Fondos en paralelas',
+    'Press con mancuernas',
+    'Press en máquina',
+    'Pullover'
+  ],
+  'Espalda': [
+    'Dominadas',
+    'Remo con barra',
+    'Remo con mancuernas',
+    'Remo en máquina',
+    'Jalón al pecho',
+    'Jalón tras nuca',
+    'Peso muerto',
+    'Pull-over con polea alta',
+    'Remo en polea baja'
+  ],
+  'Piernas': [
+    'Sentadillas',
+    'Prensa de piernas',
+    'Zancadas',
+    'Peso muerto rumano',
+    'Curl femoral tumbado',
+    'Curl femoral sentado',
+    'Extensiones de cuádriceps',
+    'Elevación de talones (gemelos)',
+    'Sentadilla frontal',
+    'Sentadilla hack'
+  ],
+  'Hombros': [
+    'Press militar',
+    'Press Arnold',
+    'Elevaciones laterales',
+    'Elevaciones frontales',
+    'Pájaros (elevación posterior)',
+    'Remo al cuello',
+    'Encogimientos de hombros',
+    'Press con mancuernas'
+  ],
+  'Bíceps': [
+    'Curl con barra',
+    'Curl martillo',
+    'Curl alterno con mancuernas',
+    'Curl concentrado',
+    'Curl en banco inclinado',
+    'Curl con barra Z',
+    'Curl en predicador'
+  ],
+  'Tríceps': [
+    'Fondos',
+    'Press francés',
+    'Extensiones en polea',
+    'Extensiones con mancuernas',
+    'Patada de tríceps',
+    'Press cerrado',
+    'Extensión con cuerda en polea'
+  ],
+  'Abdominales': [
+    'Crunch',
+    'Plancha',
+    'Elevaciones de piernas',
+    'Crunch en máquina',
+    'Ab wheel',
+    'Crunch bicicleta',
+    'Plancha lateral'
+  ],
+};
+
 
   List<String> get _ejerciciosFiltrados {
     final Set<String> ejercicios = {};
