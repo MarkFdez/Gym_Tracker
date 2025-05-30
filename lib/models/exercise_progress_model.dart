@@ -1,3 +1,4 @@
+/// Representa el progreso registrado por un usuario en un ejercicio específico.
 class ExerciseProgress {
   final String uid;
   final String ejercicio;
@@ -15,6 +16,7 @@ class ExerciseProgress {
     required this.peso,
   });
 
+  /// Serializa el objeto a un mapa.
   Map<String, dynamic> toMap() {
     return {
       'uid': uid,
@@ -26,19 +28,19 @@ class ExerciseProgress {
     };
   }
 
+  /// Crea una instancia desde un mapa, con manejo básico de errores.
   factory ExerciseProgress.fromMap(Map<String, dynamic> map) {
-  try {
-    return ExerciseProgress(
-      uid: map['uid'] ?? '',
-      ejercicio: map['ejercicio'] ?? '',
-      fecha: DateTime.tryParse(map['fecha'] ?? '') ?? DateTime.now(),
-      series: map['series'] ?? 0,
-      repeticiones: map['repeticiones'] ?? 0,
-      peso: (map['peso'] is num) ? (map['peso'] as num).toDouble() : 0.0,
-    );
+    try {
+      return ExerciseProgress(
+        uid: map['uid'] ?? '',
+        ejercicio: map['ejercicio'] ?? '',
+        fecha: DateTime.tryParse(map['fecha'] ?? '') ?? DateTime.now(),
+        series: map['series'] ?? 0,
+        repeticiones: map['repeticiones'] ?? 0,
+        peso: (map['peso'] is num) ? (map['peso'] as num).toDouble() : 0.0,
+      );
     } catch (e) {
       throw FormatException('Error al convertir ExerciseProgress: $e');
     }
   }
-
 }

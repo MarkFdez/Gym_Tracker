@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gym_tracker/screens/session_history_screen.dart';
 import '../models/workout_routine_model.dart';
 import 'start_session_screen.dart';
-
+/// Pantalla que muestra los detalles de una rutina específica.
+/// Incluye fecha de creación, lista de ejercicios, botón para iniciar sesión y ver historial.
 class RoutineDetailScreen extends StatelessWidget {
   final WorkoutRoutine rutina;
 

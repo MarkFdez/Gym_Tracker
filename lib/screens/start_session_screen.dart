@@ -4,7 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gym_tracker/models/workout_session_model.dart';
 import 'package:gym_tracker/service/firebase_service.dart';
 import '../models/workout_routine_model.dart';
-
+/// Pantalla para registrar una nueva sesión de entrenamiento basada en una rutina.
+/// Permite modificar valores de series, repeticiones, peso y añadir notas por ejercicio.
 class StartSessionScreen extends StatefulWidget {
   final WorkoutRoutine rutina;
 

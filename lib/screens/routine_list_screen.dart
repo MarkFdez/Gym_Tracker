@@ -3,10 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gym_tracker/screens/routine_detail_screen.dart';
 import '../models/workout_routine_model.dart';
-
+/// Pantalla que muestra una lista de rutinas creadas por el usuario.
+/// Permite visualizar detalles de cada rutina.
 class RoutineListScreen extends StatelessWidget {
   const RoutineListScreen({super.key});
-
+  /// Carga las rutinas desde Firestore, ordenadas por fecha.
   Future<List<WorkoutRoutine>> _cargarRutinas() async {
     final uid = FirebaseAuth.instance.currentUser?.uid;
     if (uid == null) return [];
@@ -21,7 +22,7 @@ class RoutineListScreen extends StatelessWidget {
         .map((doc) => WorkoutRoutine.fromMap(doc.id, doc.data()))
         .toList();
   }
-
+ /// Devuelve el nombre del día de la semana a partir del índice.
   String? _nombreDiaSemana(int? dia) {
     const dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
     return (dia != null && dia >= 0 && dia < 7) ? dias[dia] : null;

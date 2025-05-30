@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../../../models/workout_session_model.dart';
 
+/// Widget que muestra el progreso de una rutina específica mediante gráficos.
+/// Presenta adherencia, consistencia y evolución del peso por ejercicio.
 class RoutineProgressWidget extends StatefulWidget {
   final String rutinaId;
   final String nombreRutina;
@@ -28,6 +30,7 @@ class _RoutineProgressWidgetState extends State<RoutineProgressWidget> {
     _resumenFuture = _cargarResumenRutina();
   }
 
+  /// Carga las sesiones del usuario y calcula progreso por ejercicio.
   Future<_ResumenRutina> _cargarResumenRutina() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) throw Exception("Usuario no autenticado");
@@ -105,6 +108,8 @@ class _RoutineProgressWidgetState extends State<RoutineProgressWidget> {
             const SizedBox(height: 16),
             _buildResumen(context, data),
             const SizedBox(height: 24),
+
+            /// Gráficos de evolución por ejercicio
             ...data.progresoPorEjercicio.entries.map((entry) {
               final pesos = entry.value;
               final nombre = entry.key;
@@ -168,6 +173,7 @@ class _RoutineProgressWidgetState extends State<RoutineProgressWidget> {
     );
   }
 
+  /// Muestra un resumen general de la rutina.
   Widget _buildResumen(BuildContext context, _ResumenRutina data) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -191,6 +197,7 @@ class _RoutineProgressWidgetState extends State<RoutineProgressWidget> {
     );
   }
 
+  /// Línea individual de estadística.
   Widget _statLine(BuildContext context, String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
@@ -208,6 +215,7 @@ class _RoutineProgressWidgetState extends State<RoutineProgressWidget> {
   }
 }
 
+/// Clase auxiliar que agrupa datos de progreso de una rutina.
 class _ResumenRutina {
   final Map<String, List<double>> progresoPorEjercicio;
   final Map<String, double> mejoraPorEjercicio;
@@ -223,3 +231,4 @@ class _ResumenRutina {
     this.consistencia,
   );
 }
+

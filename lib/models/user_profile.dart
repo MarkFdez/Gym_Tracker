@@ -1,8 +1,9 @@
+/// Modelo que representa el perfil de un usuario del sistema.
 class UserProfile {
   final String uid;
   final String nombre;
   final int edad;
-  final double estatura; 
+  final double estatura;
   final double peso;
 
   UserProfile({
@@ -13,6 +14,7 @@ class UserProfile {
     required this.peso,
   });
 
+  /// Convierte el perfil en un mapa clave-valor.
   Map<String, dynamic> toMap() {
     return {
       'uid': uid,
@@ -23,18 +25,18 @@ class UserProfile {
     };
   }
 
+  /// Crea un perfil de usuario a partir de un mapa.
   factory UserProfile.fromMap(Map<String, dynamic> map) {
-  try {
-    return UserProfile(
-      uid: map['uid'] ?? '',
-      nombre: map['nombre'] ?? '',
-      edad: map['edad'] ?? 0,
-      estatura: (map['estatura'] is num) ? (map['estatura'] as num).toDouble() : 0.0,
-      peso: (map['peso'] is num) ? (map['peso'] as num).toDouble() : 0.0,
-    );
-    }   catch (e) {
+    try {
+      return UserProfile(
+        uid: map['uid'] ?? '',
+        nombre: map['nombre'] ?? '',
+        edad: map['edad'] ?? 0,
+        estatura: (map['estatura'] is num) ? (map['estatura'] as num).toDouble() : 0.0,
+        peso: (map['peso'] is num) ? (map['peso'] as num).toDouble() : 0.0,
+      );
+    } catch (e) {
       throw FormatException('Error al convertir UserProfile: $e');
     }
   }
-
 }

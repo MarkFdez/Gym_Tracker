@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// Widget reutilizable para ingresar valores numéricos.
+/// Permite opcionalmente ingresar decimales.
 class NumericInputField extends StatelessWidget {
   final TextEditingController controller;
   final String label;
@@ -29,3 +31,4 @@ class NumericInputField extends StatelessWidget {
     );
   }
 }
+

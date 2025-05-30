@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Campo de texto reutilizable con una etiqueta.
+/// Diseñado para ser utilizado en formularios de perfil.
 class LabeledTextField extends StatelessWidget {
   final String label;
   final TextEditingController controller;

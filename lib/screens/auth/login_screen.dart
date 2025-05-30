@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gym_tracker/screens/auth/register_screen.dart';
 import 'package:gym_tracker/utils/validators.dart';
 
+/// Pantalla de inicio de sesión para usuarios registrados.
 class LoginScreen extends StatefulWidget {
   final FirebaseAuth auth;
 
@@ -20,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _cargando = false;
   String? _mensajeError;
 
+  /// Intenta iniciar sesión con correo y contraseña.
   Future<void> _iniciarSesion() async {
     if (!_formKey.currentState!.validate()) return;
 

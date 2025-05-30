@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:gym_tracker/screens/user_profile_screen.dart';
 
+/// Widget que muestra un encabezado de bienvenida con el nombre del usuario,
+/// la fecha actual y un acceso rápido a su perfil.
 class GreetingHeaderWidget extends StatelessWidget {
   final String userName;
 
@@ -26,7 +28,7 @@ class GreetingHeaderWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            
+            /// Sección de texto: saludo y fecha.
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -46,7 +48,8 @@ class GreetingHeaderWidget extends StatelessWidget {
                 ),
               ],
             ),
-            
+
+            /// Avatar con inicial del usuario.
             CircleAvatar(
               radius: 22,
               backgroundColor: Colors.white12,

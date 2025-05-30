@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import '../../models/workout_routine_model.dart';
 
+/// Widget que se muestra cuando no hay rutina asignada para el día.
+/// Permite al usuario crear una nueva rutina o asignar una existente.
 class NoRoutinePlaceholderWidget extends StatelessWidget {
   final VoidCallback onCreate;
   final Function(WorkoutRoutine) onAsignar;
@@ -28,6 +30,8 @@ class NoRoutinePlaceholderWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
+
+        /// Muestra un carrusel de rutinas sin asignar, si existen.
         if (rutinasSinAsignar.isNotEmpty)
           SizedBox(
             height: 220,
@@ -61,6 +65,8 @@ class NoRoutinePlaceholderWidget extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 10),
+
+                      /// Lista parcial (máx. 3) de ejercicios dentro de la rutina.
                       ...rutina.ejercicios.take(3).map((e) => Padding(
                         padding: const EdgeInsets.symmetric(vertical: 4),
                         child: Row(
@@ -80,7 +86,10 @@ class NoRoutinePlaceholderWidget extends StatelessWidget {
                           ],
                         ),
                       )),
+
                       const Spacer(),
+
+                      /// Botón para asignar esta rutina al día actual.
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -103,8 +112,10 @@ class NoRoutinePlaceholderWidget extends StatelessWidget {
               },
             ),
           ),
+
         const SizedBox(height: 16),
       ],
     );
   }
 }
+

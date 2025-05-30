@@ -2,11 +2,17 @@
 import 'package:flutter/material.dart';
 import '../../models/workout_routine_model.dart';
 
+/// Widget que muestra una tarjeta con los detalles de una rutina.
+/// Incluye nombre, cantidad de ejercicios y botón para iniciar la sesión.
 class RoutineCardWidget extends StatelessWidget {
   final WorkoutRoutine rutina;
   final VoidCallback? onStart;
 
-  const RoutineCardWidget({super.key, required this.rutina, this.onStart});
+  const RoutineCardWidget({
+    super.key,
+    required this.rutina,
+    this.onStart,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +26,7 @@ class RoutineCardWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          /// Nombre de la rutina
           Text(
             rutina.nombre,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -28,14 +35,20 @@ class RoutineCardWidget extends StatelessWidget {
               fontSize: 18,
             ),
           ),
+
           const SizedBox(height: 6),
+
+          /// Cantidad de ejercicios
           Text(
             '${rutina.ejercicios.length} ejercicios',
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: Colors.white70,
             ),
           ),
+
           const SizedBox(height: 16),
+
+          /// Lista de ejercicios con sus datos básicos
           ...rutina.ejercicios.map(
             (e) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 4),
@@ -61,7 +74,10 @@ class RoutineCardWidget extends StatelessWidget {
               ),
             ),
           ),
+
           const SizedBox(height: 20),
+
+          /// Botón para comenzar sesión, si se provee `onStart`
           if (onStart != null)
             SizedBox(
               width: double.infinity,

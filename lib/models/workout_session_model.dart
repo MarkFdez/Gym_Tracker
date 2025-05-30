@@ -1,3 +1,4 @@
+/// Modelo que representa un ejercicio realizado durante una sesión de entrenamiento.
 class ExerciseRecord {
   final String nombre;
   final String grupoMuscular;
@@ -15,6 +16,7 @@ class ExerciseRecord {
     this.nota,
   });
 
+  /// Convierte el ejercicio en un mapa.
   Map<String, dynamic> toMap() {
     return {
       'nombre': nombre,
@@ -26,6 +28,7 @@ class ExerciseRecord {
     };
   }
 
+  /// Crea un ejercicio desde un mapa.
   factory ExerciseRecord.fromMap(Map<String, dynamic> map) {
     return ExerciseRecord(
       nombre: map['nombre'],
@@ -38,6 +41,7 @@ class ExerciseRecord {
   }
 }
 
+/// Modelo que representa una sesión de entrenamiento realizada por un usuario.
 class WorkoutSession {
   final String id;
   final String uid;
@@ -53,6 +57,7 @@ class WorkoutSession {
     required this.ejercicios,
   });
 
+  /// Convierte la sesión en un mapa para almacenamiento.
   Map<String, dynamic> toMap() {
     return {
       'uid': uid,
@@ -62,6 +67,7 @@ class WorkoutSession {
     };
   }
 
+  /// Crea una sesión desde un mapa y un ID.
   factory WorkoutSession.fromMap(String id, Map<String, dynamic> map) {
     return WorkoutSession(
       id: id,

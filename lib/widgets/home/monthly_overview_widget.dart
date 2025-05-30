@@ -1,10 +1,11 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import '../../../models/workout_session_model.dart';
+import 'package:flutter/material.dart';
+import 'package:gym_tracker/models/workout_session_model.dart';
 
+/// Widget que presenta un resumen visual del entrenamiento mensual del usuario.
+/// Muestra estadísticas, gráficos y distribución muscular.
 class MonthlyOverviewWidget extends StatefulWidget {
   const MonthlyOverviewWidget({super.key});
 
@@ -21,6 +22,7 @@ class _MonthlyOverviewWidgetState extends State<MonthlyOverviewWidget> {
     _estadisticasFuture = _cargarEstadisticasMensuales();
   }
 
+  /// Carga y calcula estadísticas de las sesiones del mes actual.
   Future<_EstadisticasMensuales> _cargarEstadisticasMensuales() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) throw Exception("Usuario no autenticado");
@@ -46,7 +48,6 @@ class _MonthlyOverviewWidgetState extends State<MonthlyOverviewWidget> {
     for (var sesion in sesiones) {
       int dia = sesion.fecha.day - 1;
       sesionesPorDia[dia] += 1;
-
       for (var ejercicio in sesion.ejercicios) {
         grupoConteo[ejercicio.grupoMuscular] = (grupoConteo[ejercicio.grupoMuscular] ?? 0) + 1;
       }
@@ -66,7 +67,7 @@ class _MonthlyOverviewWidgetState extends State<MonthlyOverviewWidget> {
       }
     }
 
-    final sesionesMesAnterior = 10;
+    final sesionesMesAnterior = 10; // Placeholder
     double comparativa = sesionesMesAnterior > 0
         ? ((totalSesiones - sesionesMesAnterior) / sesionesMesAnterior) * 100
         : 0.0;
@@ -124,6 +125,7 @@ class _MonthlyOverviewWidgetState extends State<MonthlyOverviewWidget> {
     );
   }
 
+  /// Muestra las estadísticas principales: sesiones, días, racha, comparación.
   Widget _buildResumen(BuildContext context, _EstadisticasMensuales data) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -148,6 +150,7 @@ class _MonthlyOverviewWidgetState extends State<MonthlyOverviewWidget> {
     );
   }
 
+  /// Muestra un gráfico de línea con las sesiones por día del mes.
   Widget _buildGrafica(BuildContext context, _EstadisticasMensuales data) {
     return Container(
       height: 180,
@@ -181,6 +184,7 @@ class _MonthlyOverviewWidgetState extends State<MonthlyOverviewWidget> {
     );
   }
 
+  /// Muestra la distribución porcentual de los grupos musculares trabajados.
   Widget _buildDistribucion(BuildContext context, _EstadisticasMensuales data) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -217,6 +221,7 @@ class _MonthlyOverviewWidgetState extends State<MonthlyOverviewWidget> {
     );
   }
 
+  /// Construye una fila con una estadística etiquetada.
   Widget _buildStatLine(BuildContext context, String label, String value, {Color? color}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
@@ -237,6 +242,7 @@ class _MonthlyOverviewWidgetState extends State<MonthlyOverviewWidget> {
   }
 }
 
+/// Estructura auxiliar para guardar las estadísticas procesadas del mes.
 class _EstadisticasMensuales {
   final List<int> sesionesPorDia;
   final int totalSesiones;

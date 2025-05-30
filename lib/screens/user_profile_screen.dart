@@ -4,7 +4,8 @@ import 'package:gym_tracker/screens/auth/login_screen.dart';
 import '../models/user_profile.dart';
 import '../service/firebase_service.dart';
 import '../utils/validators.dart'; 
-
+/// Pantalla para visualizar y editar el perfil del usuario actual.
+/// Permite modificar nombre, edad, estatura, peso y cerrar sesión.
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({super.key});
 
@@ -28,7 +29,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     super.initState();
     _cargarDatos();
   }
-
+/// Carga los datos actuales del perfil desde Firebase.
   Future<void> _cargarDatos() async {
     final uid = FirebaseAuth.instance.currentUser?.uid;
     if (uid == null) return;
@@ -41,7 +42,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       _pesoController.text = perfil.peso.toString();
     }
   }
-
+/// Valida y guarda los cambios en el perfil.
   Future<void> _guardarDatos() async {
     if (!_formKey.currentState!.validate()) return; 
 
@@ -68,7 +69,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       );
     }
   }
-
+/// Cierra la sesión del usuario y redirige a login.
   void _logout() async {
     await FirebaseAuth.instance.signOut();
     if (mounted) {
@@ -78,7 +79,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       );
     }
   }
-
+/// Genera un campo de formulario reutilizable con estilo personalizado.
   Widget _buildField(String label, TextEditingController controller,
       {TextInputType? keyboardType, String? Function(String?)? validator}) {
     return Column(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gym_tracker/screens/profile_screen_form.dart';
 
+/// Pantalla de registro para crear una cuenta nueva.
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -18,6 +19,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _cargando = false;
   String? _mensajeError;
 
+  /// Registra un nuevo usuario en Firebase Authentication.
   Future<void> _registrarse() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -72,8 +74,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(height: 80),
                 const Icon(Icons.person_add_alt, color: Colors.white, size: 48),
                 const SizedBox(height: 16),
-                Text('Crear cuenta', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white)),
+                Text(
+                  'Crear cuenta',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
+                ),
                 const SizedBox(height: 24),
+
+                
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
@@ -92,6 +99,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                 ),
                 const SizedBox(height: 16),
+
+                
                 TextFormField(
                   controller: _passwordController,
                   obscureText: true,
@@ -109,6 +118,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                 ),
                 const SizedBox(height: 16),
+
+                
                 TextFormField(
                   controller: _confirmarPasswordController,
                   obscureText: true,
@@ -125,9 +136,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                 ),
                 const SizedBox(height: 20),
+
                 if (_mensajeError != null)
                   Text(_mensajeError!, style: const TextStyle(color: Colors.redAccent)),
                 const SizedBox(height: 10),
+
+                
                 _cargando
                     ? const CircularProgressIndicator(color: Colors.white)
                     : SizedBox(

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+/// Modelo que representa un ejercicio dentro de una rutina.
 class Exercise {
   final String nombre;
   final String grupoMuscular;
@@ -17,6 +18,7 @@ class Exercise {
     this.nota,
   });
 
+  /// Convierte el ejercicio a un mapa para su almacenamiento.
   Map<String, dynamic> toMap() {
     return {
       'nombre': nombre,
@@ -28,6 +30,7 @@ class Exercise {
     };
   }
 
+  /// Crea un ejercicio a partir de un mapa.
   factory Exercise.fromMap(Map<String, dynamic> map) {
     return Exercise(
       nombre: map['nombre'],
@@ -40,13 +43,14 @@ class Exercise {
   }
 }
 
+/// Modelo que representa una rutina de entrenamiento con múltiples ejercicios.
 class WorkoutRoutine {
   final String id;
   final String uid;
   final DateTime fecha;
   final String nombre;
   final List<Exercise> ejercicios;
-  final int? diaSemana; 
+  final int? diaSemana;
 
   WorkoutRoutine({
     required this.id,
@@ -57,6 +61,7 @@ class WorkoutRoutine {
     this.diaSemana,
   });
 
+  /// Convierte la rutina en un mapa.
   Map<String, dynamic> toMap() {
     return {
       'uid': uid,
@@ -67,6 +72,7 @@ class WorkoutRoutine {
     };
   }
 
+  /// Crea una rutina a partir de un mapa y un ID.
   factory WorkoutRoutine.fromMap(String id, Map<String, dynamic> map) {
     return WorkoutRoutine(
       id: id,
@@ -80,4 +86,3 @@ class WorkoutRoutine {
     );
   }
 }
-

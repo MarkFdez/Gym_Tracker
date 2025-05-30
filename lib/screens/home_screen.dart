@@ -10,7 +10,8 @@ import 'package:gym_tracker/screens/start_session_screen.dart';
 import '../models/workout_routine_model.dart';
 import 'create_routine_screen.dart';
 import 'routine_list_screen.dart';
-
+/// Pantalla principal que muestra la rutina del día, calendario semanal,
+/// accesos a creación/listado de rutinas y progreso mensual.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _verificarPerfilYRutinas();
   }
 
-  
+   /// Obtiene el perfil del usuario y sus rutinas desde Firebase.
 Future<void> _verificarPerfilYRutinas() async {
   final user = _firebaseService.currentUser;
   if (user == null || !mounted) return;
@@ -59,7 +60,7 @@ Future<void> _verificarPerfilYRutinas() async {
 }
 
 
-  
+   /// Determina cuál es la rutina asignada para el día seleccionado.
   void _actualizarRutinaDelDia() {
     final rutinaDelDiaList = _rutinas.where((r) => r.diaSemana == _diaActual).toList();
     setState(() {
@@ -101,7 +102,7 @@ Future<void> _verificarPerfilYRutinas() async {
     );
   }
 
-  
+    /// Muestra el encabezado con saludo al usuario y acceso a su perfil.
   Widget _buildHeader() {
     final now = DateTime.now();
     final fecha = "${now.day}/${now.month}/${now.year}";
@@ -153,7 +154,7 @@ Future<void> _verificarPerfilYRutinas() async {
       ],
     );
   }
-
+ /// Muestra el calendario semanal para seleccionar el día de entrenamiento.
   
   Widget _buildCalendar() {
     return WeeklyCalendarWidget(
@@ -167,7 +168,7 @@ Future<void> _verificarPerfilYRutinas() async {
     );
   }
 
-  
+   /// Muestra la rutina asignada para el día o un placeholder si no hay ninguna.
   Widget _buildRoutineSection(WorkoutRoutine? rutinaDelDia, List<WorkoutRoutine> rutinasSinAsignar) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,7 +209,7 @@ Future<void> _verificarPerfilYRutinas() async {
     );
   }
 
-  
+  /// Muestra los botones de acción para crear o ver rutinas.
   Widget _buildActionButtons() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -248,7 +249,7 @@ Future<void> _verificarPerfilYRutinas() async {
     );
   }
 
-  
+   /// Muestra el progreso de la rutina del día o el resumen mensual.
   Widget _buildProgressSection(WorkoutRoutine? rutinaDelDia) {
     return rutinaDelDia != null
         ? RoutineProgressWidget(

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/workout_routine_model.dart';
 import '../service/firebase_service.dart';
-
+/// Pantalla para crear una nueva rutina.
+/// Permite seleccionar grupos musculares, ejercicios y configurarlos con series, repeticiones y peso.
 class CreateRoutineScreen extends StatefulWidget {
   const CreateRoutineScreen({super.key});
 
@@ -27,7 +28,7 @@ class _CreateRoutineScreenState extends State<CreateRoutineScreen> {
     'Pecho', 'Espalda', 'Piernas', 'Hombros',
     'Bíceps', 'Tríceps', 'Abdominales', 
   ];
-
+/// Diccionario que agrupa ejercicios según su grupo muscular.
   final Map<String, List<String>> ejerciciosPorGrupo = {
   'Pecho': [
     'Press banca',
@@ -102,7 +103,7 @@ class _CreateRoutineScreenState extends State<CreateRoutineScreen> {
   ],
 };
 
-
+ /// Devuelve los ejercicios disponibles según los grupos seleccionados.
   List<String> get _ejerciciosFiltrados {
     final Set<String> ejercicios = {};
     for (final grupo in _gruposSeleccionados) {

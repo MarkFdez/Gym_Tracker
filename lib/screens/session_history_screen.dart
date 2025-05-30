@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gym_tracker/models/workout_routine_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+/// Pantalla que muestra el historial de sesiones realizadas
+/// para una rutina específica, agrupadas por fecha.
 class SessionHistoryScreen extends StatelessWidget {
   final WorkoutRoutine rutina;
 
   const SessionHistoryScreen({super.key, required this.rutina});
-
+/// Carga las sesiones desde Firestore filtradas por usuario y rutina.
   Future<List<Map<String, dynamic>>> _cargarSesiones() async {
     final uid = FirebaseAuth.instance.currentUser?.uid;
     if (uid == null) return [];

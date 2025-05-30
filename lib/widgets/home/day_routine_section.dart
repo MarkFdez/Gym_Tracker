@@ -5,6 +5,8 @@ import '../../models/workout_routine_model.dart';
 import '../../screens/create_routine_screen.dart';
 import '../../screens/start_session_screen.dart';
 
+/// Widget que muestra la rutina asignada para un día específico.
+/// Si no hay rutina, ofrece la opción de crear una o usar una no asignada.
 class DayRoutineSection extends StatefulWidget {
   final int selectedDayIndex;
 
@@ -33,6 +35,7 @@ class _DayRoutineSectionState extends State<DayRoutineSection> {
     }
   }
 
+  /// Carga desde Firestore la rutina asignada al día actual y rutinas no asignadas.
   Future<void> _loadRoutineData() async {
     setState(() => _loading = true);
 
@@ -68,6 +71,7 @@ class _DayRoutineSectionState extends State<DayRoutineSection> {
 
   @override
   Widget build(BuildContext context) {
+    /// Muestra indicador de carga mientras se obtienen datos.
     if (_loading) {
       return const Padding(
         padding: EdgeInsets.all(16),
@@ -75,6 +79,7 @@ class _DayRoutineSectionState extends State<DayRoutineSection> {
       );
     }
 
+    /// Muestra la rutina asignada y permite comenzar la sesión.
     if (_routine != null) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +109,7 @@ class _DayRoutineSectionState extends State<DayRoutineSection> {
       );
     }
 
-    
+    /// Si no hay rutina asignada, ofrece crear o asignar una existente.
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

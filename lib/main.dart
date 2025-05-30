@@ -7,6 +7,8 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 import 'package:gym_tracker/providers/auth_provider.dart' as local;
 
+/// Punto de entrada principal de la aplicación.
+/// Inicializa Firebase, configuración regional y gestiona errores durante el arranque.
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -15,7 +17,7 @@ void main() async {
     await Firebase.initializeApp();
     runApp(
       ChangeNotifierProvider(
-        create: (_) => local.AuthProvider(), 
+        create: (_) => local.AuthProvider(),
         child: const MyApp(),
       ),
     );
@@ -24,6 +26,7 @@ void main() async {
   }
 }
 
+/// Muestra un mensaje de error si la inicialización de la app falla.
 class InitializationErrorApp extends StatelessWidget {
   const InitializationErrorApp({super.key});
 
@@ -51,6 +54,8 @@ class InitializationErrorApp extends StatelessWidget {
   }
 }
 
+/// Widget principal de la aplicación Gym Tracker.
+/// Configura el tema, la ruta inicial y las rutas de autenticación.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

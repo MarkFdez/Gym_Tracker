@@ -3,7 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gym_tracker/screens/home_screen.dart';
 import '../models/user_profile.dart';
-
+/// Pantalla para completar o editar el perfil del usuario.
+/// Requiere nombre, edad, estatura y peso antes de ingresar a la app.
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -20,7 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   bool _cargando = false;
   String? _mensajeError;
-
+ /// Guarda el perfil en Firestore validando los campos.
   Future<void> _guardarPerfil() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -175,7 +176,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
-
+ /// Crea un campo de entrada reutilizable con estilos personalizados.
   Widget _buildInputField({
     required String label,
     required TextEditingController controller,

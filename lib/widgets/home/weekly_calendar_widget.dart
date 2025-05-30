@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+/// Widget que muestra un calendario horizontal de la semana actual.
+/// Permite seleccionar un día y destaca el seleccionado.
 class WeeklyCalendarWidget extends StatelessWidget {
   final int selectedDayIndex;
   final Function(int) onDaySelected;
@@ -34,6 +36,7 @@ class WeeklyCalendarWidget extends StatelessWidget {
             ),
             child: Column(
               children: [
+                /// Día de la semana (ej. "Lu", "Ma", etc.)
                 Text(
                   DateFormat.E('es_ES').format(day).substring(0, 2),
                   style: TextStyle(
@@ -43,6 +46,8 @@ class WeeklyCalendarWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
+
+                /// Número del día (ej. 28, 29, etc.)
                 Text(
                   '${day.day}',
                   style: TextStyle(
@@ -59,3 +64,4 @@ class WeeklyCalendarWidget extends StatelessWidget {
     );
   }
 }
+

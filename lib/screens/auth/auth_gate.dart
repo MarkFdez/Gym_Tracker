@@ -4,15 +4,18 @@ import 'package:gym_tracker/screens/auth/login_screen.dart';
 import 'package:gym_tracker/screens/home_screen.dart';
 import 'package:gym_tracker/screens/profile_screen_form.dart';
 import 'package:provider/provider.dart';
-import 'package:gym_tracker/providers/auth_provider.dart' as local; 
+import 'package:gym_tracker/providers/auth_provider.dart' as local;
 
+/// Widget que actúa como compuerta de autenticación.
+/// Redirige al usuario según su estado: no autenticado, sin perfil o listo para la app.
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<local.AuthProvider>(context).user; 
+    final user = Provider.of<local.AuthProvider>(context).user;
 
+ 
     if (user == null) {
       return LoginScreen();
     }
@@ -37,10 +40,11 @@ class AuthGate extends StatelessWidget {
 
         final data = perfilSnapshot.data;
         if (data == null || !data.exists) {
-          return const ProfileScreen(); 
+          return const ProfileScreen();
         }
 
-        return const HomeScreen(); 
+       
+        return const HomeScreen();
       },
     );
   }
